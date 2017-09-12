@@ -1,6 +1,7 @@
+//Requiring dependencies
 var express = require('express');
-
 var router = express.Router();
+var passport = ('../config/passport');
 
 //Importing the models to use for database functions
 var user = require('../models/user.js');
@@ -23,6 +24,12 @@ router.post('/', function(req, res) {
   ], function() {
     res.redirect('/');
   });
+});
+
+router.put('/:id', function(req, res) {
+  var condition = "id = " + req.params.id;
+
+  console.log('condition', condition);
 });
 
 //Export routes for app.js to use

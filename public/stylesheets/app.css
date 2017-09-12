@@ -1,0 +1,89 @@
+/* Custom CSS for Beer Lovers app */
+body {
+     background: url("/images/bubbles.jpg"); 
+     overflow-x: hidden;
+     color: white;
+     text-align: center;
+}
+
+.beerIcon {
+    width: 50px;
+    height: 50px;
+
+}
+
+.home {
+    color:black;
+    margin: 0px 50px 0px 0px;
+}
+
+.link {
+    color:black;
+    margin: 5px 0px 0px 0px;
+}
+
+.logIn {
+    width: 300px;
+    margin: 0px 20px 0px 0px;
+}
+
+.topCard,
+.topCardSearch {
+     margin-top: 30px;
+     opacity: 0.7;
+     color: brown;
+     border-radius: 25px;
+     text-align: center;
+}
+
+.topCardSearch {
+    padding-top: 20px;
+}
+
+.cardHdr {
+    margin: 0 auto;
+
+}
+
+.card-divider {
+    margin-bottom: 10px;
+}
+
+.cardLink,
+.newsLink {
+    float: left;
+    margin: 10px 0px 0px 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.beerSearchButton,
+.venueSearchButton {
+    width: 300px;
+    margin: 0 auto;
+
+}
+
+.searchLabel {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.tabs {
+    margin-left: 20px;
+}
+
+.tabText{
+    font-weight: bold;
+    font-size: 20px;
+    color: brown;
+}
+
+.login {
+    margin-left: 20px;
+}
+
+.loginLabel {
+    width: 100px;
+    text-align: left;
+}

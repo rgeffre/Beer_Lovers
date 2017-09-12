@@ -1,0 +1,117 @@
+{{!-- The Search page --}}
+<div class="grid-x">
+    <div class="cell medium-3 medium-offset-3 topCard card">
+        <div class="card-divider">
+            <h2 class="cardHdr">Search for Beer and Beer Venues</h2>
+        </div>
+    </div>
+    <div class="cell medium-4"></div>    
+</div>
+
+<div class="grid-x">
+    <div class="cell medium-3 medium-offset-1 topCardSearch card">
+        <ul class="tabs" data-tabs id="beer-tabs">
+            <li class="tabs-title is-active"><a href="#panel1" aria-selected="true"><span class="tabText">Search for Beer</span></a></li>
+            <li class="tabs-title"><a href="#panel2"><span class=tabText>Search for Venues</span></a></li>
+        </ul>
+        <div class="tabs-content" data-tabs-content="beer-tabs">
+            <div class="tabs-panel is-active" id="panel1">
+                <form class="beerSearch">
+                    <div class="grid-x">
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">Beer Name:</label>
+                            <input class="input-group-field beerName searchBox" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="grid-x">    
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">Beer Type:</label>
+                            <select class="input-group-field beerType searchBox">
+                                <option value="ale">Ale</option>
+                                <option value="lager">Lager</option>
+                                <option value="stout">Stout</option>
+                                <option value="pilsner">Pilsner</option>
+                            </select>
+                                    
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">Brewer:</label>
+                            <input class="input-group-field brewer searchBox" type="text" placeholder="">
+                            
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">Rating:</label>
+                            <select class="input-group-field rating searchBox">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-9 medium-offset-1 cell end input-group">
+                            <div>
+                                <input type="submit" class="button large beerSearchButton" value="Submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tabs-panel" id="panel2">
+                <form class="eventSearch">
+                    <div class="grid-x">
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">Venue:</label>
+                            <input class="input-group-field venue searchBox" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">City:</label>
+                            <input class="input-group-field city searchBox" type="text" placeholder="">
+
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-9 cell end input-group">
+                            <label class="input-group-label searchLabel">State:</label>
+                            <input class="input-group-field state searchBox" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-9 medium-offset-1 cell end input-group">
+                            <div>
+                                <input type="submit" class="button large venueSearchButton" value="Submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="cell medium-1"></div>
+    <div class="cell medium-5 card topCardSearch"></div>
+    <div class="cell medium-1"></div>
+</div> 
+<hr>
+<div class="grid-x grid-margin-x">
+    <div class=" cell medium-10 medium-offset-1 card topCard">
+        <div class="card-divider">
+            <h2 class="cardHdr">Search Results</h2>
+        </div>
+        <div class="searchResults"></div>
+        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+    </div>
+    <div class="cell medium-1"></div>
+</div>

@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
     "debug": "~2.6.3",
@@ -17,5 +18,16 @@
     "passport-local": "^1.0.0",
     "sequelize": "^4.8.2",
     "sequelize-cli": "^3.0.0-2"
+=======
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "hbs": "~4.0.1",
+    "morgan": "~1.8.1",
+    "mysql2": "^1.4.2",
+    "sequelize": "^4.8.2",
+    "serve-favicon": "~2.4.2"
+>>>>>>> 2b389884188df0036b6d8226361cc36f82624fd7
   }
 }

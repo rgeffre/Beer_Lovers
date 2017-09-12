@@ -17,10 +17,11 @@ var app = express();
 app.engine('handlebars', exphbs({defaultLayout: 'default'}));
 app.set('view engine', 'handlebars');
 
+
 //Configuring middleware parameters
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Setting up sessions to track user login status
 app.use(session({secret:"keyboard cat", resave: true, saveUninitialized: true }));

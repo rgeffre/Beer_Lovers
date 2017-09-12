@@ -12,6 +12,26 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
+router.get('/blog', function(req, res) {
+  res.render('blog');
+});
+
+router.get('/login', function(req, res) {
+  res.render('login');
+});
+
+router.get('/mypub', function(req, res) {
+  res.render('mypub');
+});
+
+router.get('/search', function(req, res) {
+  res.render('search');
+});
+
+router.get('/signup', function(req, res) {
+  res.render('signup');
+});
+
 router.post("/signup", function(req, res) {
   console.log(req.body);
   db.User.create({

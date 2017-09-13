@@ -30,24 +30,15 @@
             <div class="card-divider">
                 <h2 class="cardHdr">Worldwide Beer Events</h2>
             </div>
-            <div class="eventsList"></div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
-            <div class="eventsList">This is an event</div>
+            <ul class="list-group">
+				{{#each results}}
+					
+					<li class="list-group-item">
+						<p class="lead"> {{this.name}} </p>
+					</li>
+					
+				{{/each}}
+				</ul>
         </div>
         <div class="cell medium-1"></div>
 </div>

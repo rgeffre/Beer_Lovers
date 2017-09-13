@@ -10,7 +10,12 @@ var user = require('../models/user.js');
 //Creating routes to render pages
 
 router.get('/', function(req, res) {
-  res.render('index');
+  request('http://api.brewerydb.com/v2/events?key=0d40d88d9c4811140db6bf54d6d5f282&year=2017', function (error, response, body) {
+    
+    var result =JSON.parse(body)
+    var results = result.data
+  res.render('index',{results});
+  });
 });
 
 router.get('/blog', function(req, res) {

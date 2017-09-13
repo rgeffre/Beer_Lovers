@@ -24,7 +24,7 @@
                             <input class="input-group-field searchBox" name="beerName" id="beerName" type="text" placeholder="">
                         </div>
                     </div>
-                    <div class="grid-x">    
+                    {{!-- <div class="grid-x">    
                         <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">Beer Category:</label>
                             <select class="input-group-field searchBox" name="beerType" id="beerType">
@@ -46,7 +46,7 @@
                             </select>
                                     
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="grid-x">
                         <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">Display Brewery:</label>
@@ -66,24 +66,24 @@
                 </form>
             </div>
             <div class="tabs-panel" id="panel2">
-                <form class="eventSearch">
-                    <div class="grid-x">
-                        <div class="medium-10 cell end input-group">
-                            <label class="input-group-label searchLabel">Venue:</label>
-                            <input class="input-group-field venue searchBox" type="text" placeholder="">
-                        </div>
-                    </div>
+                <form action="/searchVenue" method="get">
                     <div class="grid-x">
                         <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">City:</label>
-                            <input class="input-group-field city searchBox" type="text" placeholder="">
+                            <input class="input-group-field searchBox" name="locality" id="locality" type="text" placeholder="">
 
                         </div>
                     </div>
                     <div class="grid-x">
                         <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">State:</label>
-                            <input class="input-group-field state searchBox" type="text" placeholder="">
+                            <select class="input-group-field searchBox" name="region" id="region"><option value=""></option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Guam">Guam</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Northern Marianas Islands">Northern Marianas Islands</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Puerto Rico">Puerto Rico</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Virgin Islands">Virgin Islands</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select>
+                        </div>
+                    </div>
+                    <div class="grid-x">
+                        <div class="medium-10 cell end input-group">
+                            <label class="input-group-label searchLabel">Zip Code:</label>
+                            <input class="input-group-field searchBox" name="postalCode" id="postalCode" type="text" placeholder="">
                         </div>
                     </div>
                     <div class="grid-x">
@@ -108,34 +108,71 @@
             <h2 class="cardHdr">Search Results</h2>
         </div>
         <div class="searchResults">
-            {{#each body.data}}
-                <h2>{{name}}</h2>
-            {{/each}}
-           
+            {{!-- Beer Table --}}
+            {{#if beer}}
+            <table>
+                <thead>
+                    <th class="tableHdr" width="10%">Name</th>
+                    <th class="tableHdr" width="20%">Style</th>
+                    <th class="tableHdr" width="50%">Description</th>
+                    <th class="tableHdr" width="20%">Brewery</th>
+                </thead>
+                <tbody>
+                    {{#each body.data}}
+                        <tr>
+                            <td>{{ this.name }}</td>
+                            <td>{{ this.style.name }}</td>
+                            {{#if this.description}}
+                                <td>{{ this.description }}</td>
+                            {{else}}
+                                <td>{{ this.style.description }}</td>                                
+                            {{/if}}
+                            
+                            {{#if breweries}}
+                                <td>{{breweries.0.name}}</td>
+                            {{/if}}
+                        </tr>
+                    {{/each}}
+                    {{!-- {{#users}}
+                        <tr>
+                            <td>{{fullName person}}</td>
+                            <td>{{jobTitle}}</td>
+                            <td><a href="https://twitter.com/{{twitter}}">@{{twitter}}</a></td>
+                        </tr>
+                    {{/users}} --}}
+                </tbody>
+            </table>
+            {{else if venue}}
+            {{!-- Venue Table --}}
+            <table>
+                <thead>
+                    <th class="tableHdr" width="10%">Name</th>
+                    <th class="tableHdr" width="20%">Address</th>
+                    <th class="tableHdr" width="10%">Phone</th>
+                    <th class="tableHdr" width="20%">Site</th>
+                    <th class="tableHdr" width="40%">Description</th>
+                </thead>
+                <tbody>
+                    {{#each body.data}}
+                        <tr>
+                            <td>{{ this.brewery.name }}</td>
+                            <td>{{ this.streetAddress}} <br> {{this.locality}} <br> {{this.region}}</td>
+                            <td>{{ this.phone }}</td>
+                            <td><a href="{{ this.website }}" targer="_target">{{ this.website }}</a></td>
+                            <td>{{ this.brewery.description }}</td>
+                        </tr>
+                    {{/each}}
+                    {{!-- {{#users}}
+                            <tr>
+                                <td>{{fullName person}}</td>
+                                <td>{{jobTitle}}</td>
+                                <td><a href="https://twitter.com/{{twitter}}">@{{twitter}}</a></td>
+                            </tr>
+                        {{/users}} --}}
+                </tbody>
+            </table>
+            {{/if}}
         </div>
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Job Title</th>
-                <th>Twitter</th>
-            </thead>
-            <tbody>
-                {{#each students}}
-                    <tr>
-                        <td>{{ this.name }}</td>
-                        <td>{{ this.mark }}</td>
-                        <td>{{ this.subject }}</td>
-                    </tr>
-                {{/each}}
-                {{#users}}
-                    <tr>
-                        <td>{{fullName person}}</td>
-                        <td>{{jobTitle}}</td>
-                        <td><a href="https://twitter.com/{{twitter}}">@{{twitter}}</a></td>
-                    </tr>
-                {{/users}}
-            </tbody>
-        </table>
     </div>
     <div class="cell medium-1"></div>
 </div>

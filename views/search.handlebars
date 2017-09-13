@@ -16,46 +16,48 @@
         </ul>
         <div class="tabs-content" data-tabs-content="beer-tabs">
             <div class="tabs-panel is-active" id="panel1">
-                <form class="beerSearch">
+
+                <form action="/searchBeer" method="get">
                     <div class="grid-x">
-                        <div class="medium-9 cell end input-group">
+                        <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">Beer Name:</label>
-                            <input class="input-group-field beerName searchBox" type="text" placeholder="">
+                            <input class="input-group-field searchBox" name="beerName" id="beerName" type="text" placeholder="">
                         </div>
                     </div>
                     <div class="grid-x">    
-                        <div class="medium-9 cell end input-group">
-                            <label class="input-group-label searchLabel">Beer Type:</label>
-                            <select class="input-group-field beerType searchBox">
-                                <option value="ale">Ale</option>
-                                <option value="lager">Lager</option>
-                                <option value="stout">Stout</option>
-                                <option value="pilsner">Pilsner</option>
+                        <div class="medium-10 cell end input-group">
+                            <label class="input-group-label searchLabel">Beer Category:</label>
+                            <select class="input-group-field searchBox" name="beerType" id="beerType">
+                                <option value="0"></option>
+                                <option value="1">British Origin Ales</option>
+                                <option value="2">Irish Origin Ales</option>
+                                <option value="3">North American Origin Ales</option>
+                                <option value="4">German Origin Ales</option>
+                                <option value="5">Belgian And French Origin Ales</option>
+                                <option value="6">International Ale Styles</option>
+                                <option value="7">European-germanic Lager</option>
+                                <option value="8">North American Lager</option>
+                                <option value="9">Other Lager</option>
+                                <option value="10">International Styles</option>
+                                <option value="11">Hybrid/mixed Beer</option>
+                                <option value="12">Mead, Cider, Perry</option>
+                                <option value="13">Other Origin</option>
+                                <option value="14">Malternative Beverages</option>
                             </select>
                                     
                         </div>
                     </div>
                     <div class="grid-x">
-                        <div class="medium-9 cell end input-group">
-                            <label class="input-group-label searchLabel">Brewer:</label>
-                            <input class="input-group-field brewer searchBox" type="text" placeholder="">
-                            
+                        <div class="medium-10 cell end input-group">
+                            <label class="input-group-label searchLabel">Display Brewery:</label>
+                            <select class="input-group-field searchBox" name="displayBrewery" id="displayBrewery">
+                                <option value="N">No</option>
+                                <option value="Y">Yes</option>
+                            </select>                            
                         </div>
                     </div>
                     <div class="grid-x">
-                        <div class="medium-9 cell end input-group">
-                            <label class="input-group-label searchLabel">Rating:</label>
-                            <select class="input-group-field rating searchBox">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="grid-x">
-                        <div class="medium-9 medium-offset-1 cell end input-group">
+                        <div class="medium-10 medium-offset-1 cell end input-group">
                             <div>
                                 <input type="submit" class="button large beerSearchButton" value="Submit">
                             </div>
@@ -66,20 +68,20 @@
             <div class="tabs-panel" id="panel2">
                 <form class="eventSearch">
                     <div class="grid-x">
-                        <div class="medium-9 cell end input-group">
+                        <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">Venue:</label>
                             <input class="input-group-field venue searchBox" type="text" placeholder="">
                         </div>
                     </div>
                     <div class="grid-x">
-                        <div class="medium-9 cell end input-group">
+                        <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">City:</label>
                             <input class="input-group-field city searchBox" type="text" placeholder="">
 
                         </div>
                     </div>
                     <div class="grid-x">
-                        <div class="medium-9 cell end input-group">
+                        <div class="medium-10 cell end input-group">
                             <label class="input-group-label searchLabel">State:</label>
                             <input class="input-group-field state searchBox" type="text" placeholder="">
                         </div>
@@ -105,13 +107,35 @@
         <div class="card-divider">
             <h2 class="cardHdr">Search Results</h2>
         </div>
-        <div class="searchResults"></div>
-        <div class="searchResults">Blah, blah, blah, blah, blah</div>
-        <div class="searchResults">Blah, blah, blah, blah, blah</div>
-        <div class="searchResults">Blah, blah, blah, blah, blah</div>
-        <div class="searchResults">Blah, blah, blah, blah, blah</div>
-        <div class="searchResults">Blah, blah, blah, blah, blah</div>
-        <div class="searchResults">Blah, blah, blah, blah, blah</div>
+        <div class="searchResults">
+            {{#each body.data}}
+                <h2>{{name}}</h2>
+            {{/each}}
+           
+        </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Job Title</th>
+                <th>Twitter</th>
+            </thead>
+            <tbody>
+                {{#each students}}
+                    <tr>
+                        <td>{{ this.name }}</td>
+                        <td>{{ this.mark }}</td>
+                        <td>{{ this.subject }}</td>
+                    </tr>
+                {{/each}}
+                {{#users}}
+                    <tr>
+                        <td>{{fullName person}}</td>
+                        <td>{{jobTitle}}</td>
+                        <td><a href="https://twitter.com/{{twitter}}">@{{twitter}}</a></td>
+                    </tr>
+                {{/users}}
+            </tbody>
+        </table>
     </div>
     <div class="cell medium-1"></div>
 </div>

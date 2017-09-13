@@ -14,7 +14,7 @@
 </head>
   <body>
       <!-- Start Top Bar -->
-      <div class="top-bar">
+      <div class="top-bar" data-sticky data-options="marginTop:0;" style="width:100%">
         <div class="top-bar-left">
           <ul class="menu">
             <li>
@@ -27,7 +27,7 @@
               <a href="/search" class="link"><h4>Beer Search</h4></a>
             </li>
             <li>
-              <a href="/pub" class="link"><h4>My Pub</h4></a>
+              <a href="/mypub" class="link"><h4>My Pub</h4></a>
             </li>
             <li>
               <a href="/blog" class="link"><h4>Beer Blog</h4></a>
@@ -44,6 +44,9 @@
             {{!-- <button class="button logIn" type="button" data-toggle="example-dropdown">Log In</button> --}}
             <div>
               <a href="/login" class="button logIn">Login</a>
+            </div>
+            <div>
+              <a href="/logout" class="button logOut hide">Logout</a>
             </div>
         </div>
       </div>

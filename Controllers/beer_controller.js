@@ -20,8 +20,8 @@ router.get('/login', function(req, res) {
   res.render('login');
 });
 
-router.get('/mypub', function(req, res) {
-  res.render('mypub');
+router.get('/pub', function(req, res) {
+  res.render('pub');
 });
 
 router.get('/search', function(req, res) {

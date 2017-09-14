@@ -1,11 +1,12 @@
 'use strict';
 //Requiring bcrypt for the password hashing.
 var bcrypt = require('bcrypt-nodejs');
+
 //Creating the user model
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define('User', {
+  var User = sequelize.define('user', {
     //Email must not be null and must be a proper email address before creation
-    email:  {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -19,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
   //Creating a custom method for the user model to see if an unhashed pw entered by the user can be
   //compared to the password stored in the database
   User.prototype.validPassword = function(password) {
@@ -27,7 +29,10 @@ module.exports = function(sequelize, DataTypes) {
 
   //Setting up automatic password hashing
   User.hook('beforeCreate', function(user) {
-    user.password = bycrypt.hashSync(user.password, bycrypt.genSaltSync(10), null);
+    user.password = bycrypt.hashSync(user.password, bycrypt.genSaltSync(10),
+        null);
   });
+
   return User;
 };
+

@@ -21,10 +21,10 @@ $(document).ready(function() {
     passwordInput.val("");
   });
 
-  // Does a post to the signup route. If succesful, we are redirected to the members page
+  // Does a post to the signup route. If successful we redirect to the main page
   // Otherwise we log any errors
   function signUpUser(email, password) {
-    $.post("/api/signup", {
+    $.post("/signup", {
       email: email,
       password: password
     }).then(function(data) {

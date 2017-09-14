@@ -3,6 +3,7 @@ var path = require('path');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
+
 //requiring passport as it's been configured for this app
 var passport = require('./config/passport');
 
@@ -29,11 +30,14 @@ app.use(session({secret:"keyboard cat", resave: true, saveUninitialized: true })
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Import routes
-var routes = require ('./controllers/beer_controller.js');
+//Import controllers and routes
+var main = require('./controllers/beer_controller.js');
+var users = require('./controllers/user_controller.js');
+var search = require('./controllers/search_controller.js');
 
-app.use('/', routes);
-
+app.use('/', main);
+app.use('/users', users);
+app.use('/search', search);
 
 //Syncing the database and logging a success message
 db.sequelize.sync().then(function() {

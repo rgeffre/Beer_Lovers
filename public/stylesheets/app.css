@@ -1,6 +1,6 @@
 /* Custom CSS for Beer Lovers app */
 body {
-     background: url("/images/bubbles.jpg"); 
+     background: url("../images/bubbles.jpg");
      overflow-x: hidden;
      color: white;
      text-align: center;

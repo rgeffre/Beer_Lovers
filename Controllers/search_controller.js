@@ -9,7 +9,7 @@ router.get('/search', function(req, res) {
 });
 
 //executed when a user searches for beer
-router.get('/searchBeer', function (req, res) {
+router.get('/search/searchBeer', function (req, res) {
   console.log(req.body);
   var beerName = req.query.beerName;
   var beerType = req.query.beerType;

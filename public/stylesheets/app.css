@@ -88,3 +88,8 @@ body {
     width: 100px;
     text-align: left;
 }
+
+.tableHdr {
+    text-align: center;
+    color:brown;
+}

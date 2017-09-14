@@ -9,10 +9,9 @@ router.get('/search', function(req, res) {
 });
 
 //executed when a user searches for beer
-router.get('/search/searchBeer', function (req, res) {
+router.get('/searchBeer', function (req, res) {
   console.log(req.body);
   var beerName = req.query.beerName;
-  var beerType = req.query.beerType;
   var withBreweries = req.query.displayBrewery;
 
   var query = "https://api.brewerydb.com/v2/beers?key=0d40d88d9c4811140db6bf54d6d5f282&name=";
@@ -24,9 +23,63 @@ router.get('/search/searchBeer', function (req, res) {
     console.log('error:', error);
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     var jbody = JSON.parse(body);
-    console.log('body:', jbody);
-    res.render('search', { body: jbody });
+    // console.log('body:', jbody);
+    if (withBreweries === 'Y') {
+      console.log("withBreweries=yes");
+      res.render('search', {
+        beer: true,
+        venue: false,
+        body: jbody,
+        breweries: jbody.breweries
+      });
+    } else {
+      console.log("with brewery is no");
+      res.render('search', {
+        beer: true,
+        venue: false,
+        body: jbody,
+        breweries: ""
+      });
+    }
   });
 });
+
+//executed when a user searches for beer
+router.get('/searchVenue', function (req, res) {
+  //city
+  var venueLocality = req.query.locality;
+  //state
+  var venueRegion = req.query.region;
+  //postal code
+  var venuePostalCode = req.query.postalCode;
+
+  var query = "https://api.brewerydb.com/v2/locations?key=0d40d88d9c4811140db6bf54d6d5f282";
+  if (venuePostalCode) {
+    query += "&postalCode=" + venuePostalCode;
+  } else {
+
+    if (venueLocality) {
+      query += "&locality=" + venueLocality.split(' ').join('+');
+    }
+    if (venueRegion) {
+      query += "&region=" + venueRegion.split(' ').join('+');
+    }
+  }
+
+  console.log(query);
+  request(query, function (error, response, body) {
+    console.log('error:', error);
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    var jbody = JSON.parse(body);
+    console.log('body:', jbody);
+    res.render('search', {
+      beer: false,
+      venue: true,
+      body: jbody,
+      breweries: jbody.breweries
+    });
+  });
+});
+
 
 module.exports = router;

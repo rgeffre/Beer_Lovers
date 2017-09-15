@@ -5,7 +5,7 @@ var passport = ('../config/passport');
 var request = require('request');
 
 //Importing the models to use for database functions
-var user = require('../models/user.js');
+var user = require('../models');
 
 //Creating routes to render pages
 

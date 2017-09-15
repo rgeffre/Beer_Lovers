@@ -27,7 +27,7 @@
               <a href="/search/search" class="link"><h4>Beer Search</h4></a>
             </li>
             <li>
-              <a href="/mypub" class="link"><h4>My Pub</h4></a>
+              <a href="/users/mypub" class="link"><h4>My Pub</h4></a>
             </li>
             <li>
               <a href="/blog" class="link"><h4>Beer Blog</h4></a>
@@ -62,5 +62,54 @@
     <script type="text/javascript">
       $(document).foundation()
     </script>
+
+      {{#if venue}}
+      <script>
+        $(document).ready(function(){
+          var jbody= "{{searchBody}}"
+          var yay= JSON.stringify(jbody)
+          var mapOptions = {
+            center: new google.maps.LatLng({{searchBody.data.0.latitude}},
+          {{searchBody.data.0.longitude}}),
+          zoom: 12
+        };
+          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+          {{#each searchBody.data}}
+          var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h6 id="firstHeading" class="firstHeading">{{ this.brewery.name }}</h6>'+
+              '<div id="bodyContent">'+
+              '<p>{{ this.streetAddress}} <br> {{this.locality}}, {{this.region}}<br>'+
+              '{{ this.phone }}<br>'+
+              '<a href="{{ this.website }}" targer="_target">{{ this.website }}</a>'+
+              '</p>'+
+              '</div>'+
+              '</div>';
+          console.log(contentString)
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          var marker = new google.maps.Marker({
+
+            position:new google.maps.LatLng(
+                {{this.latitude}},
+          {{this.longitude}}
+        ),
+
+          map:map
+        });
+
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+          {{/each}}
+          });
+      </script>
+      {{/if}}
   </body>
 </html>

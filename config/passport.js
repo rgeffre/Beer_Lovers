@@ -1,15 +1,14 @@
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
-
+//Requiring passport dependencies
+var passport = require("passport")
+    , LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
 
-// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
-passport.use(new LocalStrategy(
-  // Our user will sign in using an email, rather than a "username"
-  {
+//Configuring Passport to use a Local Strategy meaning a username or email address and password.
+//This application is using only an email address so we configure the usernameField to reflect that
+passport.use(new LocalStrategy({
     usernameField: "email"
   },
-  function(email, password, done) {
+  function(username, password, done) {
     // When a user tries to sign in this code runs
     db.User.findOne({
       where: {

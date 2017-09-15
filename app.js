@@ -1,6 +1,7 @@
 var express = require('express');
-var path = require('path');
+var passport = require('passport');
 var session = require('express-session');
+var path = require('path');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 
@@ -13,23 +14,19 @@ var db = require('./models');
 
 //Configuring express app
 var app = express();
+
+//Configuring middleware applications, Passport,
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret:"keyboard cat", resave: true, saveUninitialized: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.engine('handlebars', exphbs({defaultLayout: 'default'}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
-
-
-//Configuring middleware parameters
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-
-//Setting up sessions to track user login status
-app.use(session({secret:"keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 //Import controllers and routes
 var main = require('./controllers/beer_controller.js');

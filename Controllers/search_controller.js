@@ -75,7 +75,7 @@ router.get('/searchVenue', function (req, res) {
     res.render('search', {
       beer: false,
       venue: true,
-      body: jbody,
+      searchBody: jbody,
       breweries: jbody.breweries
     });
   });

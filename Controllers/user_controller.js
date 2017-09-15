@@ -34,7 +34,7 @@ var passport = require('../config/passport');
 
 //Routing for logins
 router.post('/login',
-    passport.authenticate('local', { successRedirect: '/',
+    passport.authenticate('passport-local', { successRedirect: '/',
                                      failureRedirect: 'login'}));
 
 // Route for logging user out

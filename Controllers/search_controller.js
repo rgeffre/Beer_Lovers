@@ -73,7 +73,7 @@ router.get('/searchVenue', function (req, res) {
   var venuePostalCode = req.query.postalCode.trim();
 
   if (venueLocality || venueRegion || venuePostalCode) {
-  
+
     var query = "https://api.brewerydb.com/v2/locations?key=0d40d88d9c4811140db6bf54d6d5f282";
     if (venuePostalCode) {
       query += "&postalCode=" + venuePostalCode;
@@ -88,7 +88,7 @@ router.get('/searchVenue', function (req, res) {
     }
 
     // console.log(query);
-    request(query, function (error, response, body) {
+    request(query, function(error, response, body) {
       console.log('error:', error);
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       var jbody = JSON.parse(body);
@@ -96,11 +96,11 @@ router.get('/searchVenue', function (req, res) {
       res.render('search', {
         beer: false,
         venue: true,
-        body: jbody,
+        searchBody: jbody,
         breweries: ""
       });
     });
-  
+
   } else {
 
     res.render('search', {
@@ -109,7 +109,7 @@ router.get('/searchVenue', function (req, res) {
       searchBody: jbody,
       breweries: jbody.breweries
     });
+  }
 });
-
 
 module.exports = router;

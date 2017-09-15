@@ -17,13 +17,6 @@ router.get('/blog', function(req, res) {
   res.render('blog');
 });
 
-router.get('/login', function(req, res) {
-  res.render('login');
-});
-
-router.get('/mypub', function(req, res) {
-  res.render('mypub');
-});
 
 //Export routes for app.js to use
 module.exports = router;

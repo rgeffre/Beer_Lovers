@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var db = require("../models/user");
+var db = require("../models");
 var passport = require("../config/passport");
 
 //Routes for user signup, if the signup is successful log the user in, otherwise throw an error
@@ -10,19 +10,29 @@ var passport = require("../config/passport");
     res.render('signup');
   });
 
+  router.get('/login', function(req, res) {
+    res.render('login');
+  });
+
+  router.get('/mypub', function(req, res) {
+    res.render('mypub');
+  });
+
   router.post('/signup', function(req, res) {
     console.log(req.body);
-    db.User.create({
+    db.user.create({
       email: req.body.email,
       password: req.body.password
     }).then(function() {
-      res.redirect(307, '/login');
+      res.redirect(307, '/users/login');
     }).catch(function(err) {
       console.log(err);
       res.json(err);
       // res.status(422).json(err.errors[0].message);
     });
   });
+
+//
 
 // Route for logging user out
   router.get("/logout", function(req, res) {
@@ -56,7 +66,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
     if (req.user) {
       res.redirect("/mypub");
     }
-    res.sendFile('signup');
+    res.render('signup');
   });
 
   router.get("/login", function(req, res) {
@@ -64,14 +74,14 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
     if (req.user) {
       res.redirect("mypub");
     }
-    res.sendFile("index");
+    res.render('signup');
   });
 
   // Here we add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route
   // they will be redirected to the signup page
   router.get("/mypub", isAuthenticated, function(req, res) {
-    res.sendFile('signup');
+    res.render('signup');
   });
 
 module.exports = router;

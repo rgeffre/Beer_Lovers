@@ -24,7 +24,7 @@ $(document).ready(function() {
   // Does a post to the signup route. If successful we redirect to the main page
   // Otherwise we log any errors
   function signUpUser(email, password) {
-    $.post("/signup", {
+    $.post("/users/signup", {
       email: email,
       password: password
     }).then(function(data) {

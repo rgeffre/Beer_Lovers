@@ -19,7 +19,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-  });
+  },
+      {
+        timestamps: false
+      }
+      );
 
   //Creating a custom method for the user model to see if an unhashed pw entered by the user can be
   //compared to the password stored in the database
@@ -29,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
 
   //Setting up automatic password hashing
   User.hook('beforeCreate', function(user) {
-    user.password = bycrypt.hashSync(user.password, bycrypt.genSaltSync(10),
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10),
         null);
   });
 

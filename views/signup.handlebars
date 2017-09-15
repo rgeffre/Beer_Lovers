@@ -2,23 +2,23 @@
 <div class="grid-x">
     <div class="cell medium-4 medium-offset-3 topCard card">
         <h2>Sign Up Form</h2>
-        <form action="/signup" method="post" class="login">
+        <form action="/users/signup" method="post" class="login">
             <div class="grid-x">
                 <div class="medium-10 cell end">
                     <label class="loginLabel" for="email-input">Email address</label>
-                    <input type="email" class="loginBox" id="email-input">
+                    <input type="email" name='email' class="loginBox" id="email-input">
                 </div>
             </div>
             <div class="grid-x">
                 <div class="medium-10  cell end">                
                     <label class="loginLabel" for="password-input">Password</label>
-                    <input type="password" class="loginBox" id="password-input" placeholder="Password">
+                    <input type="password" name='password' class="loginBox" id="password-input" placeholder="Password">
                 </div>
          </div>
             <button type="submit" class="button logIn">Sign Up</button>
         </form>
         <br />
-        <p>Or log in <a href="/login">here</a></p>
+        <p>Or log in <a href="/users/login">here</a></p>
     </div>
     <div class="cell medium-5"></div>
 </div>

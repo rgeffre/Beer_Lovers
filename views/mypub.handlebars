@@ -2,7 +2,7 @@
 <div class="grid-x">
     <div class="cell medium-3 medium-offset-4 topCard card">
         <div class="card-divider">
-            <h2 class="cardHdr">Welcome to {{user}}'s Pub</h2>
+            <h2 class="cardHdr">Welcome to the Pub</h2>
         </div>
     </div>
     <div class="cell medium-4"></div>    
@@ -13,13 +13,59 @@
         <div class="card-divider">
             <h2 class="cardHdr">Favorite Beers</h2>
         </div>
-        <div class="beerResults"></div>
-        <div class="beerResults">Beer, Beer, Beer, Beer, Beer</div>
-        <div class="beerResults">Beer, Beer, Beer, Beer, Beer</div>
-        <div class="beerResults">Beer, Beer, Beer, Beer, Beer</div>
-        <div class="beerResults">Beer, Beer, Beer, Beer, Beer</div>
-        <div class="beerResults">Beer, Beer, Beer, Beer, Beer</div>
-        <div class="beerResults">Beer, Beer, Beer, Beer, Beer</div>
+        <div class="favBeerResults">
+            {{!-- Beer Table --}}
+            {{!-- {{#if beer}} --}}
+                <table class="stack">
+                    <thead>
+                        <th class="tableHdr" width="10%">Name</th>
+                        <th class="tableHdr" width="20%">Style</th>
+                        <th class="tableHdr" width="50%">Description</th>
+                        <th class="tableHdr" width="10%">Delete</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Stella</td>
+                            <td>American-Style Lager</td>
+                            <td>Stella is the most famous brand of beer in Egypt. It has been manufactured in Egypt since the 19th century and so many Egyptian,
+                                and actually many experienced travelers, prefer it to any other kind of beer. One will
+                                not find a single bar in Egypt that doesn't sell Stella or even have the Stella logo
+                                on the bar or shop. Stella can even be found in many bars in Europe</td>
+                            <td>
+                                <button type="button" class="button alert" id="favoriteButton" value="Delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bock</td>
+                            <td>Traditional German-Style Bock</td>
+                            <td>Each year the promise of spring was confirmed as the first keg of Schell's Bock rolled onto waiting delivery wagons. And
+                            since 1860, Schell's Bock has continued in the true German tradition. Completely reformulated
+                            for 2009, Schell's Bock has replaced Caramel Bock as our late winter seasonal. Brewed with a
+                            harmonious blend of 10 different types of malt and noble hops, Schell's Bock is fermented slowly,
+                            and then lagered for an extended period of time to ensure a smooth finish. Perfect for passing
+                            even the coldest winter day. This dark amber colored beer sports a robust malt character.</td>
+                            <td>
+                                <button type="button" class="button alert" id="favoriteButton" value="Delete">Delete</button>
+                            </td>
+                        </tr>
+                        {{!-- {{#each body.data}}
+                            <tr>
+                                <td>{{ this.name }}</td>
+                                <td>{{ this.style.name }}</td>
+                                {{#if this.description}}
+                                    <td>{{ this.description }}</td>
+                                {{else}}
+                                    <td>{{ this.style.description }}</td>
+                                {{/if}}
+                                <td>
+                                    <button type="button"  class="button alert" id="favoriteButton" value="Delete">Delete</button>
+                                </td>
+                            </tr>
+                        {{/each}} --}}
+                    </tbody>
+                </table>
+            {{!-- {{/if}} --}}
+        </div>
     </div>
     <div class="cell medium-1"></div>
 </div>

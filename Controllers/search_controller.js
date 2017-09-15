@@ -106,16 +106,9 @@ router.get('/searchVenue', function (req, res) {
     res.render('search', {
       beer: false,
       venue: true,
-      body: {
-        data: [
-          {brewery: {
-          name: "No Matches"
-        }}]
-      },
-      breweries: ""
+      searchBody: jbody,
+      breweries: jbody.breweries
     });
-    return;
-  }
 });
 
 

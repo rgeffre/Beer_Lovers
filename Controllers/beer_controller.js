@@ -5,7 +5,7 @@ var passport = ('../config/passport');
 var request = require('request');
 
 //Importing the models to use for database functions
-var user = require('../models/user.js');
+var user = require('../models');
 
 //Creating routes to render pages
 
@@ -17,13 +17,6 @@ router.get('/blog', function(req, res) {
   res.render('blog');
 });
 
-router.get('/login', function(req, res) {
-  res.render('login');
-});
-
-router.get('/mypub', function(req, res) {
-  res.render('mypub');
-});
 
 //Export routes for app.js to use
 module.exports = router;

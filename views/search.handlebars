@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="cell medium-1"></div>
-    <div class="cell medium-5 card topCardSearch"></div>
+    <div class="cell medium-5 card topCardSearch" id="map"></div>
     <div class="cell medium-1"></div>
 </div> 
 <hr>
@@ -135,7 +135,7 @@
                     <th class="tableHdr" width="55%">Description</th>
                 </thead>
                 <tbody>
-                    {{#each body.data}}
+                    {{#each searchBody.data}}
                         <tr>
                             <td>{{ this.brewery.name }}</td>
                             <td>{{ this.streetAddress}} <br> {{this.locality}} <br> {{this.region}}</td>
@@ -151,3 +151,4 @@
     </div>
     <div class="cell medium-1"></div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrFrl5twLn4xxrZ8-arQMUqJjT8a7Zclw"></script>

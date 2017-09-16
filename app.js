@@ -38,11 +38,11 @@ app.use('/users', users);
 app.use('/search', search);
 
 //Syncing the database and logging a success message
-/*db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-  });*/
+  });
 
-}
+});
 
 module.exports = app;

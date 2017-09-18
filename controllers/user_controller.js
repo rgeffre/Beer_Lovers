@@ -24,7 +24,7 @@ var passport = require('../config/passport');
       email: req.body.email,
       password: req.body.password
     }).then(function() {
-      res.redirect('/users/login');
+      res.redirect('/mypub');
 
     });
   });

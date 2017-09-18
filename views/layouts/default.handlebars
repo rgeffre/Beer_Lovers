@@ -70,32 +70,21 @@
       {{#if venue}}
       <script>
         $(document).ready(function(){
-          var jbody= "{{searchBody}}"
-          var yay= JSON.stringify(jbody)
+          var jbody= "{{searchBody}}";
+          var yay= JSON.stringify(jbody);
+
           var mapOptions = {
-            center: new google.maps.LatLng({{searchBody.data.0.latitude}},
-          {{searchBody.data.0.longitude}}),
+            center: new google.maps.LatLng(
+                {{searchBody.data.0.latitude}},
+          {{searchBody.data.0.longitude}}
+        ),
           zoom: 12
         };
+
           var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-          {{#each searchBody.data}}
-          var contentString = '<div id="content">'+
-              '<div id="siteNotice">'+
-              '</div>'+
-              '<h6 id="firstHeading" class="firstHeading">{{ this.brewery.name }}</h6>'+
-              '<div id="bodyContent">'+
-              '<p>{{ this.streetAddress}} <br> {{this.locality}}, {{this.region}}<br>'+
-              '{{ this.phone }}<br>'+
-              '<a href="{{ this.website }}" target="_target">{{ this.website }}</a>'+
-              '</p>'+
-              '</div>'+
-              '</div>';
-          console.log(contentString)
 
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
+          {{#each searchBody.data}}
 
           var marker = new google.maps.Marker({
 
@@ -107,13 +96,27 @@
           map:map
         });
 
+          var infowindow = new google.maps.InfoWindow();
 
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
+          google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setOptions({
+              content: '<div id="content"><div id="siteNotice"></div><h6 id="firstHeading" class="firstHeading"> {{ this.brewery.name }}</h6><div id="bodyContent"><p>{{ this.streetAddress}} <br> {{this.locality}}, {{this.region}}<br>{{ this.phone }}<br><a href="{{ this.website }}" target="_target">{{ this.website }}</a></p></div></div>'
+            });
+
+            infowindow.setPosition(new google.maps.LatLng(
+                {{this.latitude}},
+            {{this.longitude}}
+          )
+          )
+
+            infowindow.open(map);
+          })
+
           {{/each}}
+
           });
       </script>
       {{/if}}
+
   </body>
 </html>

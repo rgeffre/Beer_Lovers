@@ -60,7 +60,7 @@
                     </div>
                     <div class="grid-x">
                         <div class="medium-10 cell end input-group">
-                            <label class="input-group-label searchLabel">Any Postal Code:</label>
+                            <label class="input-group-label searchLabel">Zip Code:</label>
                             <input class="input-group-field searchBox" name="postalCode" id="postalCode" type="text" placeholder="">
                         </div>
                     </div>
@@ -138,7 +138,8 @@
                     {{#each searchBody.data}}
                         <tr>
                             <td>{{ this.brewery.name }}</td>
-                            <td>{{ this.streetAddress}} <br> {{this.locality}} <br> {{this.region}}</td>
+                            <td>{{ this.streetAddress}} <br> {{this.locality}} <br> {{this.region}}
+                            <br>{{this.postalCode}}</td>
                             <td>{{ this.phone }}</td>
                             <td><a href="{{ this.website }}" target="_blank">{{ this.website }}</a></td>
                             <td>{{ this.brewery.description }}</td>

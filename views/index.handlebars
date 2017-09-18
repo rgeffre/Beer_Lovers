@@ -26,14 +26,15 @@
                 <h2 class="cardHdr">Worldwide Beer Events</h2>
             </div>
             <ul class="list-group">
-				{{#each results}}
-					
-					<li class="list-group-item">
-						<p class="lead"> {{this.name}} </p>
-					</li>
-					
-				{{/each}}
-				</ul>
+                {{#each results}}
+
+                <li class="list-group-item">
+                    <a href="{{this.website}}" target="_target">{{this.name}}</a>
+                </li>
+
+                {{/each}}
+            </ul>
+
         </div>
         <div class="cell medium-1"></div>
 </div>

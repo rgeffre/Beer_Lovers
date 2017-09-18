@@ -64,7 +64,7 @@ var isAuthenticated = require('../config/middleware/isAuthenticated');
     // If the user already has an account send them their mypub page,
     //otherwise redirect them to the signup page
     if (req.user) {
-      res.redirect('/mypub');
+      res.redirect('mypub');
     }
     res.render('signup');
   });

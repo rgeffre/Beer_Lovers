@@ -2,7 +2,9 @@
   "name": "beerapp",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -16,6 +18,8 @@
     "passport-local": "^1.0.0",
     "request": "^2.81.0",
     "sequelize": "^4.8.3",
-    "sequelize-cli": "^3.0.0-2"
-  }
+    "sequelize-cli": "^3.0.0-2",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
